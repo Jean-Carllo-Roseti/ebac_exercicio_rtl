@@ -4,7 +4,7 @@ import styles from './PostComments.module.css';
 import Comment from '../../models/Comment';
 
 const Post = () => {
-    const [comments, setComments] = useState<Comment[]>([]);
+    const [comments, setComments] = useState<Comment[]>([]); //este "Comment[]" corresponde ao array onde os comentarios vão ficar espostos na pagina??
     const [tempComment, setTempComment] = useState('');
 
     function handleAddComment(event: FormEvent<HTMLFormElement>) {
@@ -27,7 +27,7 @@ const Post = () => {
             </ul>
             <form onSubmit={handleAddComment} className={styles['post-comments-form']}>
                 <textarea value={tempComment} onChange={e => setTempComment(e.target.value)} required className={styles['post-comments-form-textarea']} />
-                <button type="submit" className={styles['post-comments-form-button']}>
+                <button data-testid='btn-comentar' type="submit" className={styles['post-comments-form-button']}>
                     Comentar
                 </button>
             </form>
